@@ -1,13 +1,151 @@
 body {
-  margin: 0;
+  /*margin: 0;*/
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: dimgrey;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+#modal-root {
+  position: relative;
+  z-index: 999;
+}
+.app {
+  height: 10em;
+  width: 10em;
+  background: lightblue;
+  overflow: hidden;
+}
+
+.modal {
+  background: rgba(148, 0,211,0.5);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  color: #282c34;
+}
+.MuiTooltip-tooltip{
+  background-color: rgba(148, 0,211,0.5);
+  front-size: 18px;
+  z-index: 50;
+
+}
+
+.modem{
+  width: max-content;
+  height: max-content;
+  left: 0;
+  top:25%;
+}
+
+.baseStation{
+  width: max-content;
+  height: max-content;
+  right: 0;
+  top:25%;
+}
+
+
+.network{
+  height: 600px;
+  width: 600px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 2px dotted #ea3180;
+  border-radius: 50%;
+}
+
+.journal{
+  height: 100vmin;
+  width: 30%;
+  top:0;
+  right: 0;
+  overflow: scroll;
+  border-top: 2px #ea3180;
+
+}
+.journal h2{
+  color: #ea3180;
+}
+.MuiTabs-root{
+  background-color: #ea3180;
+
+}
+.MuiTabs-indicator{
+  background-color: dimgrey;
+}
+
+
+.uplinkPackage {
+
+  -moz-animation: bobble 10s infinite alternate;
+}
+@-moz-keyframes bobble {
+
+  0% {
+    -moz-transform: translate3d(50%, 10%, 0px);
+    -moz-animation-timing-function: ease-in;
+  }
+  50% {
+    -moz-transform: translate3d(50%, 50px, 0px);
+    -moz-animation-timing-function: ease-out;
+  }
+  100% {
+    -moz-transform: translate3d(50px, 40px, 0px);
+  }
+}
+.demo{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.MuiTable-root{
+  text-align: center;
+  border: 1px;
+
+
+}
+.MuiTableHead-root{
+  font-size: 36px;
+  background-color: #ea3180 !important;
+  color: #282c34;
+
+
+}
+
+.MuiTableCell-root{
+  border: 1px solid rgb(224, 224, 224);
+  align-content: center;
+}
+.MuiTableCell-head {
+
+  font-weight: 100;
+  line-height: 1rem;
+}
+
+.MuiCard-root{
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+}
+.MuiTypography-root{
+
+
 }
