@@ -1,8 +1,7 @@
 import React from 'react';
-import {Tooltip, Button, TextField, Slider} from '@material-ui/core';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import {Tooltip, Button, Slider} from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import GolfCourseIcon from '@material-ui/icons/GolfCourse';
-
 import Modal from "./Modal";
 import CloseIcon from "@material-ui/icons/Close";
 
@@ -58,11 +57,11 @@ class Modem extends React.Component {
         this.setState({showModal: false});
     }
     handleChange(event, value){
-
-            this.setState({value: value});
-            // console.log(this.state.value)
-
+        this.setState({value:value});
+        this.props.onChangeData(value);
     }
+
+
 
     render() {
         const modal = this.state.showModal ? (

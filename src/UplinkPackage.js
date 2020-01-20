@@ -1,11 +1,12 @@
 import React from 'react';
 import Modal from "./Modal";
-import {Grid, Paper, Button, Tooltip,AppBar, Tabs, Tab, Typography, Box} from '@material-ui/core';
+import { Button, Tooltip,AppBar, Tabs, Tab, Typography, Box, List, ListItem} from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import Collapse from "@material-ui/core/Collapse";
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -40,7 +41,8 @@ class UplinkPackage extends React.Component {
             showPreambul: false,
             value:0,
             showCollapse:0,
-            openCollapse: false,
+            openCollapse: true,
+
         };
         this.handleShow = this.handleShow.bind(this);
         this.handleHide = this.handleHide.bind(this);
@@ -57,9 +59,9 @@ class UplinkPackage extends React.Component {
         this.setState({showModal: false});
     }
 
-    handleChange = (event, newValue) => {
-        this.setState({value: newValue, openCollapse: (!this.state.openCollapse)});
-    };
+    handleChange(event, value){
+        this.setState({value: value});
+    }
 
     handleCollapse=() => {
         this.setState({ openCollapse: !this.state.openCollapse});
@@ -68,11 +70,11 @@ class UplinkPackage extends React.Component {
 
     render() {
 
-
          const modal = this.state.showModal ? (
             <Modal>
                 <div className="modal">
                     <div>
+                        <h2>Вы отаравили значение {this.props.value}</h2>
 
                         <div>
                             <AppBar position="static" color ='#ea3180'>
@@ -86,23 +88,34 @@ class UplinkPackage extends React.Component {
                                 </Tabs>
                             </AppBar>
                             <TabPanel value={this.state.value} index={2}>
-                                <Button onClick={this.handleCollapse}>
-                                Заголовок
-                                    {this.state.open ? <ExpandLess /> : <ExpandMore />}
-                                </Button>
-
-                                <Button  onClick={this.handleCollapse}>
-                                    Полезные данные
-                                </Button>
 
 
+                                <List>
+                                    <ListItem>
+                                        Заголовок
+                                        {this.state.open ? <ExpandLess /> : <ExpandMore />}
+                                    </ListItem>
+
+                                    <ListItem button  onClick={this.handleCollapse}>
+                                        Полезные данные
+                                        {this.state.open ? <ExpandLess /> : <ExpandMore />}
+                                    </ListItem>
+                                    <Collapse  in={this.state.open} timeout="auto">
+                                        <List component="div" disablePadding>
+                                            {this.props.value}
+                                        </List>
+                                    </Collapse>
+                                </List>
                             </TabPanel>
+
                             <TabPanel value={this.state.value} index={1}>
                                 Раздел находится в разработке
                             </TabPanel>
+
                             <TabPanel value={this.state.value} index={0}>
                                 Раздел находится в разработке
                             </TabPanel>
+
                             <TabPanel value={this.state.value} index={3}>
                                 Разден находится в разработке
                             </TabPanel>
@@ -114,7 +127,7 @@ class UplinkPackage extends React.Component {
                 </div>
             </Modal>
         ) : null;
-        const component = ( <div classeName="uplinkPackage" onClick={this.handleShowModal}>
+        const component = ( <div classeName="uplinkPackage" onClick={this.handleShow}>
             <MailOutlineIcon
                 style={{ fontSize: 50, color: "darkviolet"}}
                 onClick={this.handleShow}
@@ -131,6 +144,7 @@ class UplinkPackage extends React.Component {
                      leaveDelay={500}
                      placement = 'left' arrow>
                 {component}
+
             </Tooltip>
         );
     }

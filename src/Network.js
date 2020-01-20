@@ -15,10 +15,15 @@ class Network extends React.Component{
             journal : [],
             ansers:[],
             sendAnser: false,
+            modemData:20,
            }
         this.handleSendData = this.handleSendData.bind(this);
+        this.handleSendAnser = this.handleSendAnser.bind(this);
+        this.handleChangeData =this.handleChangeData.bind(this);
 
     }
+
+
 
     handleSendAnser () {
         if(this.state.journal[this.state.journal.length-1] === "Пакет обнаружен базовой станцией") {
@@ -52,6 +57,11 @@ class Network extends React.Component{
 
     }
 
+    handleChangeData(data){
+        this.setState({modemData:data});
+
+    }
+
 
 
     render(){
@@ -64,10 +74,10 @@ class Network extends React.Component{
             <div className="demo">
                 < div className="network">
                     <div className="modem">
-                        <Modem/>
+                        <Modem onChangeData = {this.handleChangeData}/>
                         <Button variant="outlined" onClick={this.handleSendData}>Отправить</Button>
                     </div>
-                    {this.state.packages.map((pack)=> <UplinkPackage key={pack.id}/>)}
+                    {this.state.packages.map((pack)=> <UplinkPackage key={pack.id} value = {this.state.modemData} />)}
 
                     {this.state.ansers.map((ans)=> <DownlinkPackage key={ans.id} />)}
 

@@ -37,11 +37,17 @@ code {
   z-index: 999;
   color: #282c34;
 }
-.MuiTooltip-tooltip{
-  background-color: rgba(148, 0,211,0.5);
+.MuiTooltip-popper{
+
   front-size: 18px;
   z-index: 50;
 
+}
+.MuiTooltip-tooltip {
+  background-color: rgba(148, 0,211,0.5);
+}
+.MuiTooltip-tooltip .MuiTooltip-tooltipPlacementBottom .MuiTooltip-tooltipArrow{
+  background-color: rgba(148, 0,211,0.5);
 }
 
 .modem{
@@ -147,5 +153,15 @@ code {
 }
 .MuiTypography-root{
 
+
+}
+
+.MuiButton-root{
+  color: #ea3180;
+}
+
+.MuiButton-outlined{
+  color: #ea3180;
+  border: 1px solid rgba(234, 49, 128, 0.5);
 
 }
